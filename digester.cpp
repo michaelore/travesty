@@ -14,6 +14,7 @@ namespace travesty {
 			int nextChar = 0;
 			if (!in.eof()) {
 				nextChar = in.get();
+				if (nextChar == -1) continue;
 			} else if (!initial.empty()) {
 				nextChar = initial.front();
 				initial.pop();
@@ -35,7 +36,17 @@ namespace travesty {
 	void Digester::display() {
 		std::map<std::queue<int>, std::map<int, long> >::iterator it;
 		for ( it=datas.begin() ; it != datas.end(); it++ ) {
-			std::cout << (*it).first.size() << " => " << (*it).second.size() << std::endl;
+			std::queue<int> quecopy = std::queue<int>((*it).first);
+			while (!quecopy.empty()) {
+				std::cout << (char)quecopy.front() << " ";
+				quecopy.pop();
+			}
+			std::cout << "===> ";
+			std::map<int, long>::iterator jt;
+			for (jt=(*it).second.begin(); jt != (*it).second.end(); jt++) {
+				std::cout << (char)(*jt).first << " => " << (*jt).second << " ";
+			}
+			std::cout << "\n";
 		}
 	}
 }
