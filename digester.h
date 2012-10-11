@@ -9,12 +9,13 @@
 namespace travesty {
 	class Digester {
 		private:
-		std::map<std::queue<int>, std::map<int, long> > datas;
+		std::map<std::queue<int>, std::map<int, int> > datas;
 		std::queue<int> markovState;
 		Digester();
 		public:
 		Digester(std::istream& in, int nparam);
-		//void score(std::queue<int> preceding, int next);
+		void printState(std::ostream& out);
+		void printNext(std::ostream& out);
 		void display();
 	};
 }

@@ -17,6 +17,10 @@ int main(int argc, const char* argv[]) {
 		std::cout << "N must be positive.\n";
 	}
 	Digester digest = Digester(std::cin, nparam);
-	digest.display();
+	//digest.display();
+	digest.printState(std::cout);
+	while (true) {
+		digest.printNext(std::cout);
+	}
 	return 0;
 }
