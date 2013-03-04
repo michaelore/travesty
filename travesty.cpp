@@ -16,6 +16,7 @@ int main(int argc, const char* argv[]) {
 	long nparam = strtol(argv[1], NULL, 10);
 	if (nparam < 1) {
 		std::cout << "N must be positive.\n";
+		return -1;
 	}
 	Digester digest = Digester(std::cin, nparam);
 	//digest.display();
